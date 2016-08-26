@@ -23,45 +23,36 @@ class FlutterDemo extends StatefulWidget {
 class _FlutterDemoState extends State<FlutterDemo> {
   int _counter = 0;
   int _button_presses = 0;
+  List<String> choices = '0011223344556677'.split('').toList();
+  choices.shuffle();
 
   //builder function for body
   Widget buildBody(BuildContext context) {
+    List<List<Widget>> buttons = new List<List<Widget>>();
+    List<Widget> rows = new List<Widget>();
+
+    int i = 4;
+    int j = 4;
+
+    while (i-- > 0) {
+      buttons.add(new List<Widget>());
+      while (j-- > 0) {
+        buttons.last.add(new RaisedButton(
+            child: new Text('${choices[i*4+j]}'),
+            onPressed: () {
+              setState(() {
+                _button_presses++;
+              });
+            }));
+      }
+      rows.add(
+          new Flex(mainAxisSize: MainAxisSize.min, children: buttons.last));
+      j = 4;
+    }
+
     //return new Center(child: new Text('I\'ve been tapped tapped $_counter'));
     return new Center(
-        child: new Flex(direction: FlexDirection.vertical, children: <Widget>[
-      new Flex(mainAxisSize: MainAxisSize.min, children: <Widget>[
-        new RaisedButton(
-            child: new Text('1'),
-            onPressed: () {
-              setState(() {
-                _button_presses++;
-              });
-            }),
-        new RaisedButton(
-            child: new Text('2'),
-            onPressed: () {
-              setState(() {
-                _button_presses++;
-              });
-            })
-      ]),
-      new Flex(mainAxisSize: MainAxisSize.min, children: <Widget>[
-        new RaisedButton(
-            child: new Text('1'),
-            onPressed: () {
-              setState(() {
-                _button_presses++;
-              });
-            }),
-        new RaisedButton(
-            child: new Text('2'),
-            onPressed: () {
-              setState(() {
-                _button_presses++;
-              });
-            })
-      ])
-    ]));
+        child: new Flex(direction: FlexDirection.vertical, children: rows));
   }
 
   //builder function for floating action
@@ -90,7 +81,7 @@ class _FlutterDemoState extends State<FlutterDemo> {
     return new Scaffold(
         appBar: new AppBar(title: new Text(title)),
         body: new Builder(builder: buildBody)
-    //    floatingActionButton: new Builder(builder: buildFab)
-    );
+        //    floatingActionButton: new Builder(builder: buildFab)
+        );
   }
 }
