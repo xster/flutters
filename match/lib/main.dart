@@ -36,13 +36,14 @@ class _FlutterDemoState extends State<FlutterDemo> {
     while (i-- > 0) {
       buttons.add(new List<Widget>());
       while (j-- > 0) {
-        buttons.last.add(new RaisedButton(
-            child: new Text('${choices[i*4+j]}'),
-            onPressed: () {
-              setState(() {
-                _button_presses++;
-              });
-            }));
+        buttons.last.add(new Padding(
+            child: new RaisedButton(
+                child: new Text('${choices[i*4+j]}'),
+                onPressed: () {
+                  setState(() {
+                    _button_presses++;
+                  });
+                }),padding:new EdgeInsets.all(4.0)));
       }
       rows.add(
           new Flex(mainAxisSize: MainAxisSize.min, children: buttons.last));
