@@ -23,8 +23,7 @@ class FlutterDemo extends StatefulWidget {
 class _FlutterDemoState extends State<FlutterDemo> {
   int _counter = 0;
   int _button_presses = 0;
-  List<String> choices = '0011223344556677'.split('').toList();
-  choices.shuffle();
+  List<String> choices = '0011223344556677'.split('').toList()..shuffle();
 
   //builder function for body
   Widget buildBody(BuildContext context) {
