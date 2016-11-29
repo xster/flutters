@@ -2,4 +2,4 @@ name: myapp
 description: A new flutter project.
 dependencies:
   flutter:
-    path: ../../flutter/packages/flutter
+    sdk: flutter
