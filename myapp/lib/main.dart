@@ -31,6 +31,9 @@ class _FlutterDemoState extends State<FlutterDemo> {
     'Race': const InputValue(),
     'Class': const InputValue()
   };
+  
+  //for slider
+  double _discreteValue = 20.0;
 
   //general input box maker
   Input make_input(String e) {
@@ -58,12 +61,6 @@ class _FlutterDemoState extends State<FlutterDemo> {
         .showSnackBar(new SnackBar(content: new Text(value)));
   }
 
-  void showMenuSelection(String value) {
-    //if (<String>[_simpleValue1, _simpleValue2, _simpleValue3].contains(value))
-    //  _simpleValue = value;
-    showInSnackBar('You selected: $value');
-  }
-
   //Put it all together.
   @override
   Widget build(BuildContext context) {
@@ -71,7 +68,7 @@ class _FlutterDemoState extends State<FlutterDemo> {
         key: _scaffoldKey,
         appBar: new AppBar(title: new Text('Dnd'), actions: <Widget>[
           new PopupMenuButton<String>(
-              onSelected: showMenuSelection,
+              onSelected: showInSnackBar,
               itemBuilder: (BuildContext context) => <PopupMenuItem<String>>[
                     new PopupMenuItem<String>(
                         value: 'Toolbar menu', child: new Text('Toolbar menu')),
@@ -81,7 +78,22 @@ class _FlutterDemoState extends State<FlutterDemo> {
                         value: 'Hooray!', child: new Text('Hooray!')),
                   ])
         ]),
-        body: new Block(children: [make_input('Name')]),
+        body: new Block(children: [
+          make_input('Name'),
+          new Text('slider test'),
+          new Slider(
+                value: _discreteValue,
+                min: 0.0,
+                max: 100.0,
+                divisions: 10,
+                label: '${_discreteValue.round()}',
+                onChanged: (double value) {
+                  setState(() {
+                    _discreteValue = value;
+                  });
+                }
+              )
+        ]),
         floatingActionButton: new FloatingActionButton(
           //onPressed: _incrementCounter,
           tooltip: 'Increment',
