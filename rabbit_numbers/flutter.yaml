@@ -1,0 +1,5 @@
+name: rabbit_numbers
+uses-material-design: true
+
+assets:
+  - assets/nuRabbit.png

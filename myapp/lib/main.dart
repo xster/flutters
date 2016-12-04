@@ -1,3 +1,7 @@
+import 'dart:io' show File;
+import 'dart:async';
+
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 
 //Entry point
@@ -24,16 +28,29 @@ class FlutterDemo extends StatefulWidget {
 //base stateful widget's state
 class _FlutterDemoState extends State<FlutterDemo> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  
+  @override
+  void initState(){
+    super.initState();
+    //do stuff when state is initialized
+    
+  }
 
   //holds the values of textboxes
-  Map<String, List> _values = {
+  Map<String, InputValue> _values = {
     'Name': const InputValue(),
     'Race': const InputValue(),
     'Class': const InputValue()
   };
-  
+
   //for slider
   double _discreteValue = 20.0;
+  
+  Future<File> _get_data() async {
+    // get the path to the document directory.
+    String dir = (await PathProvider.getApplicationDocumentsDirectory()).path;
+    return new File('$dir/data.txt');
+  }
 
   //general input box maker
   Input make_input(String e) {
@@ -46,13 +63,8 @@ class _FlutterDemoState extends State<FlutterDemo> {
         value: _values[e],
         labelText: '$e: ${_values[e].text}',
         onSubmitted: (InputValue _input) {
-          /*showDialog(
-              context: context,
-              child: new AlertDialog(
-                  title: new Text('test'),
-                  content: new Text(_input.text)));*/
-
-          showInSnackBar(_input.text);
+          //showInSnackBar(_input.text);
+          //showInSnackBar(dir);
         });
   }
 
@@ -82,20 +94,26 @@ class _FlutterDemoState extends State<FlutterDemo> {
           make_input('Name'),
           new Text('slider test'),
           new Slider(
-                value: _discreteValue,
-                min: 0.0,
-                max: 100.0,
-                divisions: 10,
-                label: '${_discreteValue.round()}',
-                onChanged: (double value) {
-                  setState(() {
-                    _discreteValue = value;
-                  });
-                }
-              )
+              value: _discreteValue,
+              min: 0.0,
+              max: 100.0,
+              divisions: 10,
+              label: '${_discreteValue.round()}',
+              onChanged: (double value) {
+                setState(() {
+                  _discreteValue = value;
+                });
+              }),
+          new Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: new LinearProgressIndicator()
+            ),
+          new Image.file(new File('/sdcard/rabbit.png'))
         ]),
         floatingActionButton: new FloatingActionButton(
-          //onPressed: _incrementCounter,
+          onPressed: (){
+            
+          },
           tooltip: 'Increment',
           child: new Icon(Icons.add),
         ));
