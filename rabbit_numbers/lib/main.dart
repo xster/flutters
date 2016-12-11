@@ -360,7 +360,9 @@ class _FlutterDemoState extends State<FlutterDemo> {
                           tiles.shuffle();
                           fill_tiles();
                           make_move_message();
-                          last_sel.state.setState((){});
+                          last_sel.state.setState((){
+                            last_sel.focused=false;
+                          });
                           last_sel = null;
                           undoable = false;
                           check_for_win();
