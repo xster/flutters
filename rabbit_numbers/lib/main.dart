@@ -43,7 +43,6 @@ Future<File> _get_data() async {
 void save_file(_callback) {
   _get_data().then((File _file) {
     String tile_data = tiles.map((e) => e.matched ? 0 : e.value).join('\n');
-    //snack('score:$score\ncost:$move_cost\n$tile_data');
     _file
         .writeAsString('$score\n$move_cost\n$high_score\n$tile_data')
         .then(_callback);
@@ -145,7 +144,7 @@ void check_tiles(Tile new_sel) {
 
         last_sel = null;
         undoable = true;
-         check_for_win();
+        check_for_win();
       });
     } else {
       //tile exists between selected tiles. Not a valid match
@@ -315,7 +314,7 @@ class _FlutterDemoState extends State<FlutterDemo> {
                                   count++;
                                 });
                                 undoable = false;
-                                last_sel.state.setState((){});
+                                last_sel.state.setState(() {});
                                 last_sel = null;
                                 setState(() {});
                               });
@@ -342,6 +341,7 @@ class _FlutterDemoState extends State<FlutterDemo> {
                                 (e) => tiles.add(new Tile(value: e.value)));
                             fill_tiles();
                             make_move_message();
+                            app_state.setState(() {}); //okies?
                           });
                         }
                       });
@@ -355,17 +355,20 @@ class _FlutterDemoState extends State<FlutterDemo> {
                     onPressed: () {
                       setState(() {
                         if (score >= move_cost) {
-                          score -= move_cost;
-                          move_cost *= 2;
-                          tiles.shuffle();
-                          fill_tiles();
-                          make_move_message();
-                          last_sel.state.setState((){
+                          save_file((_file) {
+                            score -= move_cost;
+                            move_cost *= 2;
+                            tiles.shuffle();
+                            fill_tiles();
+                            make_move_message();
+                            /*last_sel.state.setState((){
                             last_sel.focused=false;
+                          });*/
+                            last_sel = null;
+                            undoable = false;
+                            check_for_win();
+                            app_state.setState(() {}); //okies?
                           });
-                          last_sel = null;
-                          undoable = false;
-                          check_for_win();
                         }
                       });
                     },

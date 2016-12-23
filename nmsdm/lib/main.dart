@@ -1,0 +1,356 @@
+import 'package:flutter/material.dart';
+//this import doesn't work for random reason
+//import 'package:flutter_markdown/flutter_markdown.dart';
+import '../../../flutter/packages/flutter_markdown/lib/src/markdown.dart';
+
+
+String _data = '''DEATH_QUOTE_1
+	THE GODS DO NOT PROTECT FOOLS.
+	FOOLS ARE PROTECTED BY MORE CAPABLE FOOLS.
+
+DEATH_QUOTE_2
+	THE ONLY WAY OF DISCOVERING THE LIMITS 
+	OF THE POSSIBLE IS TO VENTURE A LITTLE WAY 
+	PAST THEM INTO THE IMPOSSIBLE.
+
+DEATH_QUOTE_3
+	I MAY NOT HAVE GONE WHERE I INTENDED TO GO, 
+	BUT I THINK I HAVE ENDED UP WHERE I NEEDED TO BE.
+
+DEATH_QUOTE_4
+	IN SUCH SECONDS OF DECISION ENTIRE FUTURES ARE MADE.
+
+DEATH_QUOTE_5
+	THE SUPREME IRONY OF LIFE IS THAT HARDLY 
+	ANYONE GETS OUT OF IT ALIVE.
+
+DEATH_QUOTE_6
+	ALL REALITY IS A GAME.
+
+DEATH_QUOTE_7
+	WE ARE AN IMPOSSIBILITY IN AN IMPOSSIBLE UNIVERSE.
+
+DEATH_QUOTE_8
+	LIFE IS PLEASANT. DEATH IS PEACEFUL.
+	IT'S THE TRANSITION THAT'S TROUBLESOME.
+
+DEATH_QUOTE_9
+	REALITY IS THAT WHICH, WHEN YOU STOP BELIEVING IN IT, DOESN'T GO AWAY.
+
+DEATH_QUOTE_10
+	THE MYSTERY OF LIFE ISN'T A PROBLEM TO SOLVE,
+	BUT A REALITY TO EXPERIENCE.
+
+DEATH_QUOTE_11
+	TO APPRECIATE THE WONDER OF THE UNIVERSE, 
+	ONE MUST FIRST REMAIN ALIVE.
+
+DEATH_QUOTE_12
+	I TELL YOU, WE ARE HERE ON EARTH TO FART AROUND,
+	AND DON'T LET ANYBODY TELL YOU DIFFERENT.
+
+DEATH_QUOTE_13
+	WE LIVE ON A PLACID ISLAND OF IGNORANCE IN THE MIDST 
+	OF BLACK SEAS OF INFINITY, AND IT WAS NOT MEANT THAT 
+	WE SHOULD VOYAGE FAR.
+
+DEATH_QUOTE_14
+	A STAR HAS DIED. ELSEWHERE IN THE COSMOS, 
+	IN AN UNREMARKABLE CORNER OF ONE GALACTIC ARM, 
+	A CHILD WAS BORN. SUCH IS THE BALANCE OF EXISTENCE.
+
+DEATH_QUOTE_15
+	I SEE THE BLACKNESS. WORSE THAN SPACE, 
+	WORSE THAN ANYTHING. UTTERLY BLACK, 
+	AND IT SWALLOWS ME WHOLE.
+
+DEATH_QUOTE_16
+	LOOKING AT THESE STARS SUDDENLY DWARFED 
+	MY OWN TROUBLES AND ALL THE GRAVITIES OF 
+	TERRESTRIAL LIFE...
+
+DEATH_QUOTE_17
+	THERE'S A DIFFERENCE BETWEEN THE FACT THAT THE 
+	UNIVERSE IS INHERENTLY UNFAIR ON A COSMIC LEVEL, 
+	AND THE FACT THAT LIFE IS UNFAIR BECAUSE PEOPLE 
+	ARE ACTIVELY MAKING IT SO.
+
+DEATH_QUOTE_18
+	SO MUCH UNIVERSE, AND SO LITTLE TIME.
+
+DEATH_QUOTE_19
+	I GUESS YOU COULD CALL IT A 'FAILURE', 
+	BUT I PREFER THE TERM 'LEARNING EXPERIENCE'.
+
+DEATH_QUOTE_20
+	I BELIEVE THAT LIFE IS A GAME, THAT LIFE IS A CRUEL JOKE.
+
+DEATH_QUOTE_21
+	THERE IS NO SUCH THING AS SCIENCE FICTION, 
+	THERE IS ONLY SCIENCE EVENTUALITY.
+
+DEATH_QUOTE_22
+	ETERNITY IS A LONG TIME, ESPECIALLY TOWARDS THE END.
+
+DEATH_QUOTE_23
+	TWO THINGS ARE INFINITE: THE UNIVERSE AND HUMAN 
+	STUPIDITY; AND I'M NOT SURE ABOUT THE UNIVERSE.
+
+DEATH_QUOTE_24
+	THERE SEEMS TO BE MORE TO THE UNIVERSE THAN 
+	RANDOM, CHAOTIC, PURPOSELESS MOVEMENT OF A 
+	COLLECTION OF MOLECULAR PARTICLES.
+
+DEATH_QUOTE_25
+	WE'D STARED INTO THE FACE OF DEATH, 
+	AND DEATH BLINKED FIRST.
+
+DEATH_QUOTE_26
+	STABILITY IS THE BEGINNING OF THE END. WE ONLY 
+	WALK BY CONTINUALLY BEGINNING TO FALL FORWARD.
+
+DEATH_QUOTE_27
+	EVEN WHEN THE WORLD THROWS IT WORST AND 
+	THEN TURNS ITS BACK, THERE IS STILL ALWAYS HOPE.
+
+DEATH_QUOTE_28
+	REALITY IS SHAPED BY THE FORCES THAT DESTROY IT.
+
+DEATH_QUOTE_29
+	WE WALK IN DARK PLACES NO OTHERS WILL ENTER.
+
+DEATH_QUOTE_30
+	IF YOU'RE GOING TO DO SOMETHING THAT CRAZY, 
+	SAVE IT FOR WHEN IT'LL MAKE A DIFFERENCE.
+
+DEATH_QUOTE_31
+	POLLUTED BY CRIMES, AND TORN BY THE BITTEREST 
+	REMORSE, WHERE CAN I FIND REST BUT IN DEATH?
+
+DEATH_QUOTE_32
+	HERE LIES ONE FROM A DISTANT STAR, BUT THE SOIL IS 
+	NOT ALIEN TO HIM, FOR IN DEATH HE BELONGS TO THE UNIVERSE.
+
+DEATH_QUOTE_33
+	WE THINK EVERYTHING IN THIS UNIVERSE HAS TO CONFORM 
+	TO OUR PARADIGM OF WHAT MAKES SENSE.
+
+DEATH_QUOTE_34
+	SOMEWHERE, SOMETHING INCREDIBLE IS WAITING TO BE KNOWN.
+
+DEATH_QUOTE_35
+	SOMETIMES I THINK I MUST HAVE A GUARDIAN IDIOT.
+
+DEATH_QUOTE_36
+	WE'RE EACH OF US ALONE, TO BE SURE. WHAT CAN YOU 
+	DO BUT HOLD YOUR HAND OUT IN THE DARK?
+
+DEATH_AUTHOR_1
+	- LARRY NIVEN, RINGWORLD
+
+DEATH_AUTHOR_2
+	- ARTHUR C. CLARKE
+
+DEATH_AUTHOR_3
+	- DOUGLAS ADAMS, 
+	THE LONG DARK TEA-TIME OF THE SOUL
+
+DEATH_AUTHOR_4
+	- DAN SIMMONS. HYPERION
+
+DEATH_AUTHOR_5
+	- ROBERT HEINLEIN
+
+DEATH_AUTHOR_6
+	- IAIN M. BANKS, THE PLAYER OF GAMES
+
+DEATH_AUTHOR_7
+	- RAY BRADBURY
+
+DEATH_AUTHOR_8
+	- ISAAC ASIMOV
+
+DEATH_AUTHOR_9
+	- PHILIP K. DICK,
+
+DEATH_AUTHOR_10
+	- FRANK HERBERT, DUNE
+
+DEATH_AUTHOR_11
+	- NEAL ASHER, DARK INTELLIGENCE
+
+DEATH_AUTHOR_12
+	- KURT VONNEUGT, A MAN WITHOUT A COUNTRY
+
+DEATH_AUTHOR_13
+	- H.P. LOVECRAFT, THE CALL OF CTHULHU
+
+DEATH_AUTHOR_14
+	- ALAN DEAN FOSTER, STAR TREK
+
+DEATH_AUTHOR_15
+	- JAMES SMYTHE, THE EXPLORER
+
+DEATH_AUTHOR_16
+	- H.G. WELLS, THE TIME MACHINE
+
+DEATH_AUTHOR_17
+	- JOHN SCALZI, OLD MAN'S WAR
+
+DEATH_AUTHOR_18
+	- TERRY PRATCHETT, THE LAST HERO
+
+DEATH_AUTHOR_19
+	- ANDY WEIR, THE MARTIAN
+
+DEATH_AUTHOR_20
+	- NEIL GAIMAN, AMERICAN GODS
+
+DEATH_AUTHOR_21
+	- STEVEN SPIELBERG
+
+DEATH_AUTHOR_22
+	- STEPHEN HAWKING
+
+DEATH_AUTHOR_23
+	- ALBERT EINSTEIN
+
+DEATH_AUTHOR_24
+	- EDGAR D. MITCHELL (APOLLO 14 ASTRONAUT)
+
+DEATH_AUTHOR_25
+	- RICK YANCEY, THE 5TH WAVE
+
+DEATH_AUTHOR_26
+	- WILLIAM GIBSON
+
+DEATH_AUTHOR_27
+	- PITTACUS LORE, THE POWER OF SIX
+
+DEATH_AUTHOR_28
+	- D. HARLAN WILSON, THE KYOTO MAN
+
+DEATH_AUTHOR_29
+	- J. MICHAEL STRACZYNSKI
+
+DEATH_AUTHOR_30
+	- ANN LECKIE, ANCILLARY JUSTICE
+
+DEATH_AUTHOR_31
+	- MARY SHELLEY, FRANKENSTEIN
+
+DEATH_AUTHOR_32
+	- CLIFFORD D. SIMAK, WAY STATION
+
+DEATH_AUTHOR_33
+	- ROBERT BUETTNER, OVERKILL
+
+DEATH_AUTHOR_34
+	- CARL SAGAN
+
+DEATH_AUTHOR_35
+	- SPIDER ROBINSON
+
+DEATH_AUTHOR_36
+	- URSULA K. LE GUIN,
+	THE UNREAL AND THE REAL VOLUME 2''';
+
+Map<String,Map<String,String>> _mdata={};
+
+
+
+void main() {
+  String _target='';
+  _data.split('\n').forEach((e){
+    if(e.startsWith('DEATH_QUOTE_') || e.startsWith('DEATH_AUTHOR_')){
+      _target = e.split('_').last;
+      if(!_mdata.containsKey(_target)){
+        _mdata[_target]={};
+      }
+    }else if(e.startsWith('	-')){
+      _mdata[_target]['person'] = e;
+    }else if(e.startsWith('	')){
+      if(_mdata.containsKey(_target) && _mdata[_target].containsKey('quote')){
+        _mdata[_target]['quote']+='\n$e';
+      }else if(_mdata.containsKey(_target)){
+        _mdata[_target]['quote']=e;
+      }
+    }
+    
+  });
+  runApp(new MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: 'Files',
+      theme: new ThemeData(
+        primarySwatch: Colors.grey,
+      ),
+      home: new MyHomePage(title: 'NMSDM'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+  final String title;
+
+  @override
+  _MyHomePageState createState() => new _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+  @override
+  Widget build(BuildContext context) {
+    //get random quote key
+    List _keys = _mdata.keys.toList();
+    _keys.shuffle();
+    
+    //get random quote
+    Map<String,String> _quote = _mdata[_keys.first];
+    
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text(config.title),
+      ),
+      body: new Center(
+        child: new Markdown(
+          //data:'${_quote['quote']}\n\n${_quote['person']}',
+          data:'''
+# Markdown Example
+Markdown allows you to easily include formatted text, images, and even formatted Dart code in your app.
+
+## Styling
+Style text as _italic_, __bold__, or `inline code`.
+
+- Use bulleted lists
+- To better clarify
+- Your points
+
+## Links
+You can use [hyperlinks](hyperlink) in markdown
+
+## Code blocks
+Formatted Dart code looks really pretty too. This is an example of how to create your own Markdown widget:
+
+    new Markdown(data: 'Hello _world_!');
+
+Enjoy!
+''',
+        ),
+      ),
+      floatingActionButton: new FloatingActionButton(
+        onPressed: ()=>setState((){}),//causes state to redraw
+        tooltip: 'Increment',
+        child: new Icon(Icons.refresh),
+      ),
+      drawer:new Drawer(
+        child:new Text('test')
+      ),
+    );
+  }
+}
