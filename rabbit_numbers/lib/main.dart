@@ -287,7 +287,7 @@ class _FlutterDemoState extends State<FlutterDemo> {
     return new Scaffold(
       key: _scaffoldKey,
       appBar: new AppBar(
-          title: new Text(score == 0 ? config.title : 'Score: ${score}'),
+          title: new Text(score == 0 ? widget.title : 'Score: ${score}'),
           actions: <Widget>[
             //undo button
             new Opacity(
@@ -454,25 +454,25 @@ class Tile_state extends State<Tile> {
   @override
   void initState() {
     super.initState();
-    //value = config.value; //shorter reference to value
+    //value = widget.value; //shorter reference to value
     //default to blank card for filling spaces
   }
 
   @override
   Widget build(BuildContext context) {
-    config.state = this; //force widget to be aware of state
+    widget.state = this; //force widget to be aware of state
     return new Card(
-        color: config.focused ? focused_color : default_color,
+        color: widget.focused ? focused_color : default_color,
         child: new InkWell(
             onTap: () {
               setState(() {
-                check_tiles(config);
+                check_tiles(widget);
               });
             },
             child: new Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: new Opacity(
-                    child: new Text('${config.value}'),
-                    opacity: config.matched ? 0.0 : 1.0))));
+                    child: new Text('${widget.value}'),
+                    opacity: widget.matched ? 0.0 : 1.0))));
   }
 }
